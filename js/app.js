@@ -52,7 +52,7 @@ for (const section of sections) {
 
 // Add class 'active' to section when near top of viewport
 
-function makeActive() {
+const makeActive = () => {
   for (const section of sections) {
     const box = section.getBoundingClientRect();
 
@@ -66,7 +66,7 @@ function makeActive() {
       section.classList.remove("active-link");
     }
   }
-}
+};
 
 // Make sections active
 document.addEventListener("scroll", function (e) {
