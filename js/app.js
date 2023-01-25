@@ -23,7 +23,7 @@
  *
  */
 const navbar = document.querySelector("#navbar__list");
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("section[id]");
 const id = document.getElementsByTagName("id");
 
 /**
@@ -39,7 +39,8 @@ const id = document.getElementsByTagName("id");
  */
 
 // build the nav
-for (section of sections) {
+
+for (const section of sections) {
   const navList = document.createElement("li");
   const anchorLink = document.createElement("a");
   anchorLink.innerHTML = section.dataset.nav;
@@ -49,12 +50,42 @@ for (section of sections) {
   navbar.appendChild(navList);
 }
 
-console.log(navbar);
-
 // Add class 'active' to section when near top of viewport
 
-// Scroll to anchor ID using scrollTO event
+function makeActive() {
+  for (const section of sections) {
+    const box = section.getBoundingClientRect();
 
+    //Find a value that works best, but 150 seems to be a good start.
+    if (box.top <= 150 && box.bottom >= 700) {
+      //apply active state on current section and corresponding Nav link
+      section.classList.add("active-link");
+
+      //Remove active state from other section and corresponding Nav link
+    } else {
+      section.classList.remove("active-link");
+    }
+  }
+}
+
+// Make sections active
+document.addEventListener("scroll", function (e) {
+  e.preventDefault();
+  makeActive();
+});
+
+// Scroll to anchor ID using scrollTO event
+const menuLinks = document.querySelectorAll("#navbar__list li a");
+
+for (const menuLink of menuLinks) {
+  menuLink.addEventListener("click", linkClicked);
+}
+function linkClicked(e) {
+  e.preventDefault();
+  document.querySelector(e.target.hash).scrollIntoView({
+    behavior: "smooth",
+  });
+}
 /**
  * End Main Functions
  * Begin Events
