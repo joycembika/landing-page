@@ -28,12 +28,10 @@ const id = document.getElementsByTagName("id");
 
 /**
  * End Global Variables
- * Start Helper Functions
  *
  */
 
 /**
- * End Helper Functions
  * Begin Main Functions
  *
  */
@@ -58,23 +56,33 @@ const makeActive = () => {
 
     //Find a value that works best, but 150 seems to be a good start.
     if (box.top <= 150 && box.bottom >= 700) {
+      let links = document.querySelectorAll("#navbar__list a");
       //apply active state on current section and corresponding Nav link
       section.classList.add("active-link");
+      let sectionId = "#" + section.id;
+      for (const link of links) {
+        if (link.hash === sectionId) {
+          link.classList.add("active");
+          //Remove active state from corresponding Nav link
+        } else {
+          link.classList.remove("active");
+        }
+      }
 
-      //Remove active state from other section and corresponding Nav link
+      //Remove active state from other section
     } else {
       section.classList.remove("active-link");
     }
   }
 };
 
-// Make sections active
-document.addEventListener("scroll", function (e) {
-  e.preventDefault();
-  makeActive();
-});
+/**
+ * End Main Functions
+ * Begin Events
+ *
+ */
 
-// Scroll to anchor ID using scrollTO event
+// Scroll to section on link click
 const menuLinks = document.querySelectorAll("#navbar__list li a");
 
 for (const menuLink of menuLinks) {
@@ -86,14 +94,9 @@ function linkClicked(e) {
     behavior: "smooth",
   });
 }
-/**
- * End Main Functions
- * Begin Events
- *
- */
 
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
+// Make sections active
+document.addEventListener("scroll", function (e) {
+  e.preventDefault();
+  makeActive();
+});
