@@ -62,19 +62,6 @@ section {
   min-height: 80vh;
 }
 
-@media only screen and (min-width: 35em) {
-  main {
-    margin: 20vh 1em 20vh;
-  }
-  .main-hero {
-    min-height: 20vh;
-    padding-top: 3em;
-  }
-  section {
-    min-height: 60vh;
-  }
-}
-
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
@@ -106,6 +93,35 @@ section {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+  }
+}
+
+.nav-toggle {
+  width: 50px;
+  background: none;
+  border: none;
+  display: none;
+}
+
+.toggle-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+@media only screen and (min-width: 35em) {
+  .nav-toggle {
+    display: block;
+    order: 1;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
   }
 }
 /* Header Styles */
