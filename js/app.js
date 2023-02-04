@@ -85,18 +85,19 @@ const makeActive = () => {
 // Scroll to section on link click
 const menuLinks = document.querySelectorAll("#navbar__list li a");
 
-for (const menuLink of menuLinks) {
-  menuLink.addEventListener("click", linkClicked);
-}
-function linkClicked(e) {
+const linkClicked = (e) => {
   e.preventDefault();
   document.querySelector(e.target.hash).scrollIntoView({
     behavior: "smooth",
   });
+};
+
+for (const menuLink of menuLinks) {
+  menuLink.addEventListener("click", linkClicked);
 }
 
 // Make sections active
-document.addEventListener("scroll", function (e) {
+document.addEventListener("scroll", (e) => {
   e.preventDefault();
   makeActive();
 });

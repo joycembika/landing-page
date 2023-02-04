@@ -95,33 +95,9 @@ section {
     transition: ease 0.3s all;
   }
 }
-
-.nav-toggle {
-  width: 50px;
-  background: none;
-  border: none;
-  display: none;
-}
-
-.toggle-line {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #000;
-  border-radius: 4px;
-  margin: 2px 0;
-}
-
-@media only screen and (min-width: 35em) {
-  .nav-toggle {
-    display: block;
-    order: 1;
-  }
-
-  nav {
-    position: absolute;
-    top: 100%;
-    z-index: 10;
+@media only screen and (max-width: 36.125em) {
+  .navbar__menu {
+    font-size: 12px;
   }
 }
 /* Header Styles */
