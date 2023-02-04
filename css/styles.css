@@ -62,6 +62,19 @@ section {
   min-height: 80vh;
 }
 
+@media only screen and (min-width: 35em) {
+  main {
+    margin: 20vh 1em 20vh;
+  }
+  .main-hero {
+    min-height: 20vh;
+    padding-top: 3em;
+  }
+  section {
+    min-height: 60vh;
+  }
+}
+
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
